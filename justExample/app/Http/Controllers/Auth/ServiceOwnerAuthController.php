@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\ServiceOwner;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -89,6 +90,19 @@ class ServiceOwnerAuthController extends Controller
             'msg'=>'Service Owner Logged Out Successfully'
         ]);
     }
-
+    //admin get all users names
+    public function userNames(Request $request){
+        $users=User::all();
+        $subarray=[];
+        foreach ($users as $user){
+            $subarray['user_name']= $user->name;
+        }
+        $response[]=$subarray;
+        return $response->json([
+            'status'=>true,
+            'msg'=>'retrived all users name successfully',
+            'data'=>$response
+        ]);
+    }
 }
 

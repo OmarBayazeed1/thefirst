@@ -38,5 +38,5 @@ Route::middleware(['auth:user', 'type.user'])->group(function () {
 Route::middleware(['auth:serviceOwner', 'type.serviceOwner'])->group(function () {
    Route::get('/service_owners/profile',[ServiceOwnerAuthController::class,'profile']);
    Route::get('/service_owners/logout',[ServiceOwnerAuthController::class,'logout']);
-
+   Route::get('/service_owners/userNames',[ServiceOwnerAuthController::class,'userNames']);
 });
